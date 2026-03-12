@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | QQAI</title>
+  <meta name="description" content="Contact QQAI for questions, support, or partnership discussions." />
+  <link rel="icon" href="https://qqai.ai/wp-content/uploads/2025/08/LOGOs.jpg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'] },
+          colors: {
+            brand: { DEFAULT: '#046bd2', hover: '#0077ED' },
+            surface: { dark: '#000000', mid: '#1d1d1f', light: '#f5f5f7' }
+          },
+          fontSize: {
+            'display': ['clamp(2.5rem, 6vw, 5rem)', { lineHeight: '1.05', fontWeight: '700', letterSpacing: '-0.03em' }],
+            'headline': ['clamp(1.75rem, 3.5vw, 3rem)', { lineHeight: '1.1', fontWeight: '700', letterSpacing: '-0.02em' }],
+            'title': ['clamp(1.25rem, 2vw, 1.5rem)', { lineHeight: '1.2', fontWeight: '600', letterSpacing: '-0.01em' }],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    #navbar { background: rgba(0,0,0,0.8); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s cubic-bezier(0.25,0.1,0.25,1), transform 0.8s cubic-bezier(0.25,0.1,0.25,1); }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .stagger > .fade-in:nth-child(1) { transition-delay: 0s; }
+    .stagger > .fade-in:nth-child(2) { transition-delay: 0.1s; }
+    .stagger > .fade-in:nth-child(3) { transition-delay: 0.2s; }
+    .mobile-overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    .mobile-overlay.open { opacity: 1; pointer-events: auto; }
+    .mobile-panel { transform: translateY(-100%); transition: transform 0.35s cubic-bezier(0.25,0.1,0.25,1); }
+    .mobile-overlay.open .mobile-panel { transform: translateY(0); }
+  </style>
+</head>
+<body class="font-sans antialiased text-surface-mid">
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav id="navbar" class="fixed top-0 inset-x-0 z-50 h-11">
+    <div class="max-w-[980px] mx-auto px-4 sm:px-6 flex items-center justify-between h-full">
+      <a href="index.html" class="flex items-center gap-1.5">
+        <img src="https://qqai.ai/wp-content/uploads/2025/08/LOGOs.jpg" alt="QQAI" class="h-5 w-5 rounded object-cover" />
+        <span class="text-sm font-semibold text-white">QQAI</span>
+      </a>
+      <div class="hidden md:flex items-center gap-7">
+        <a href="index.html" class="text-xs text-white/80 hover:text-white transition">Home</a>
+        <a href="services.html" class="text-xs text-white/80 hover:text-white transition">Services</a>
+        <a href="investor-relations.html" class="text-xs text-white/80 hover:text-white transition">Investor Relations</a>
+        <a href="blog.html" class="text-xs text-white/80 hover:text-white transition">Blog</a>
+        <a href="agency.html" class="text-xs text-white/80 hover:text-white transition">Partnership</a>
+        <a href="about-us.html" class="text-xs text-white/80 hover:text-white transition">About us</a>
+        <a href="faq.html" class="text-xs text-white/80 hover:text-white transition">FAQ</a>
+        <a href="contact.html" class="text-xs text-white hover:text-white transition">Contact</a>
+      </div>
+      <button id="menuBtn" class="md:hidden text-white" aria-label="Menu">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobileOverlay" class="mobile-overlay fixed inset-0 z-[60]">
+    <div class="mobile-panel bg-white w-full pt-14 pb-8 px-8 shadow-xl">
+      <button id="closeMenu" class="absolute top-3 right-4 text-surface-mid" aria-label="Close">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <div class="flex flex-col gap-5">
+        <a href="index.html" class="mobile-link text-base font-semibold text-surface-mid">Home</a>
+        <a href="services.html" class="mobile-link text-base font-semibold text-surface-mid">Services</a>
+        <a href="investor-relations.html" class="mobile-link text-base font-semibold text-surface-mid">Investor Relations</a>
+        <a href="blog.html" class="mobile-link text-base font-semibold text-surface-mid">Blog</a>
+        <a href="agency.html" class="mobile-link text-base font-semibold text-surface-mid">Partnership</a>
+        <a href="about-us.html" class="mobile-link text-base font-semibold text-surface-mid">About us</a>
+        <a href="faq.html" class="mobile-link text-base font-semibold text-surface-mid">FAQ</a>
+        <a href="contact.html" class="mobile-link text-base font-semibold text-surface-mid">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== HERO — Dark ====== -->
+  <section class="relative bg-black min-h-[60vh] flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <h1 class="text-display text-white fade-in">Contact Us</h1>
+      <p class="mt-6 text-base sm:text-lg text-white/60 max-w-2xl mx-auto leading-relaxed fade-in">
+        At QQAI, we are committed to providing exceptional support to our global community of entrepreneurs. Whether you have questions about our products, need technical assistance, or want to discuss a partnership, our team is ready to help.
+      </p>
+    </div>
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand/10 rounded-full blur-[120px]"></div>
+  </section>
+
+  <!-- ====== INFO CARDS — Light ====== -->
+  <section class="bg-white py-24 lg:py-36">
+    <div class="max-w-[980px] mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-8 stagger">
+        <div class="bg-surface-light rounded-2xl p-8 text-center fade-in">
+          <div class="w-12 h-12 mx-auto rounded-full bg-brand/10 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+          </div>
+          <h3 class="text-title text-surface-mid">Our Office</h3>
+          <p class="mt-3 text-surface-mid/60 leading-relaxed">Our main office is located in Victoria, Canada.</p>
+        </div>
+        <div class="bg-surface-light rounded-2xl p-8 text-center fade-in">
+          <div class="w-12 h-12 mx-auto rounded-full bg-brand/10 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+          </div>
+          <h3 class="text-title text-surface-mid">Email</h3>
+          <p class="mt-3 text-surface-mid/60 leading-relaxed">support@qqai.ai — For all general inquiries and support.</p>
+        </div>
+        <div class="bg-surface-light rounded-2xl p-8 text-center fade-in">
+          <div class="w-12 h-12 mx-auto rounded-full bg-brand/10 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-title text-surface-mid">Work Hours</h3>
+          <p class="mt-3 text-surface-mid/60 leading-relaxed">Our team is available around the clock to assist you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CONTACT FORM — Dark ====== -->
+  <section class="bg-black py-24 lg:py-36">
+    <div class="max-w-xl mx-auto px-6">
+      <h2 class="text-headline text-white text-center fade-in">Send A Message</h2>
+      <p class="mt-4 text-center text-white/50 fade-in">You can also send us a message directly using the form below.</p>
+      <form class="mt-12 space-y-6 fade-in" onsubmit="event.preventDefault()">
+        <div>
+          <label class="block text-sm font-medium text-white/70 mb-2">Name</label>
+          <input type="text" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-brand/50 transition" placeholder="Your name" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-white/70 mb-2">Email</label>
+          <input type="email" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-brand/50 transition" placeholder="your@email.com" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-white/70 mb-2">Message</label>
+          <textarea rows="5" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-brand/50 transition resize-none" placeholder="Tell us how we can help"></textarea>
+        </div>
+        <button type="submit" class="w-full py-3 bg-brand hover:bg-brand-hover text-white text-sm font-semibold rounded-full transition">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="bg-surface-light border-t border-surface-mid/10">
+    <div class="max-w-[980px] mx-auto px-6 py-12">
+      <div class="grid md:grid-cols-3 gap-10">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <img src="https://qqai.ai/wp-content/uploads/2025/08/LOGOs.jpg" alt="QQAI" class="h-6 w-6 rounded object-cover" />
+            <span class="text-sm font-semibold text-surface-mid">QQAI</span>
+          </div>
+          <p class="text-xs text-surface-mid/50 leading-relaxed">QQAI empowers entrepreneurship and make it accessible to all small and micro businesses globally.</p>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-surface-mid mb-4">Quick Links</p>
+          <div class="flex flex-col gap-2">
+            <a href="index.html" class="text-xs text-surface-mid/50 hover:text-surface-mid transition">Home</a>
+            <a href="services.html" class="text-xs text-surface-mid/50 hover:text-surface-mid transition">Services</a>
+            <a href="investor-relations.html" class="text-xs text-surface-mid/50 hover:text-surface-mid transition">Investor Relations</a>
+            <a href="blog.html" class="text-xs text-surface-mid/50 hover:text-surface-mid transition">Blog</a>
+            <a href="agency.html" class="text-xs text-surface-mid/50 hover:text-surface-mid transition">Partnership</a>
+            <a href="about-us.html" class="text-xs text-surface-mid/50 hover:text-surface-mid transition">About us</a>
+            <a href="faq.html" class="text-xs text-surface-mid/50 hover:text-surface-mid transition">FAQ</a>
+            <a href="contact.html" class="text-xs text-surface-mid/50 hover:text-surface-mid transition">Contact</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-surface-mid mb-4">Contact</p>
+          <p class="text-xs text-surface-mid/50">support@qqai.ai</p>
+          <div class="flex gap-4 mt-4">
+            <span class="text-xs text-surface-mid/40">Facebook</span>
+            <span class="text-xs text-surface-mid/40">Twitter</span>
+            <span class="text-xs text-surface-mid/40">YouTube</span>
+            <span class="text-xs text-surface-mid/40">Instagram</span>
+          </div>
+        </div>
+      </div>
+      <div class="mt-10 pt-6 border-t border-surface-mid/10 text-center">
+        <p class="text-xs text-surface-mid/40">&copy; 2025 QQAI. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    const overlay = document.getElementById('mobileOverlay');
+    document.getElementById('menuBtn').addEventListener('click', () => overlay.classList.add('open'));
+    document.getElementById('closeMenu').addEventListener('click', () => overlay.classList.remove('open'));
+    document.querySelectorAll('.mobile-link').forEach(a => a.addEventListener('click', () => overlay.classList.remove('open')));
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XMJFKB0312"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XMJFKB0312');
+  </script>
+</body>
+</html>

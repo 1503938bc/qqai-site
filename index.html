@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QQAI | Innovative Opportunities for Businesses & Creators</title>
+  <meta name="description" content="QQAI offers AI solutions and empowers entrepreneurs, founders, and businesses worldwide." />
+  <link rel="icon" href="https://qqai.ai/wp-content/uploads/2025/08/LOGOs.jpg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'] },
+          colors: {
+            brand: { DEFAULT: '#046bd2', hover: '#0077ED' },
+            surface: { dark: '#000000', mid: '#1d1d1f', light: '#f5f5f7' }
+          },
+          fontSize: {
+            'display': ['clamp(2.5rem, 6vw, 5rem)', { lineHeight: '1.05', fontWeight: '700', letterSpacing: '-0.03em' }],
+            'headline': ['clamp(1.75rem, 3.5vw, 3rem)', { lineHeight: '1.1', fontWeight: '700', letterSpacing: '-0.02em' }],
+            'title': ['clamp(1.25rem, 2vw, 1.5rem)', { lineHeight: '1.2', fontWeight: '600', letterSpacing: '-0.01em' }],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Apple-style thin nav */
+    #navbar {
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+    }
+    #navbar.scrolled-light {
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+    }
+
+    /* Scroll reveal */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger children */
+    .stagger > .fade-in:nth-child(1) { transition-delay: 0s; }
+    .stagger > .fade-in:nth-child(2) { transition-delay: 0.1s; }
+    .stagger > .fade-in:nth-child(3) { transition-delay: 0.2s; }
+    .stagger > .fade-in:nth-child(4) { transition-delay: 0.3s; }
+    .stagger > .fade-in:nth-child(5) { transition-delay: 0.4s; }
+
+    /* Link arrow animation */
+    .link-arrow svg {
+      transition: transform 0.3s ease;
+    }
+    .link-arrow:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* Mobile menu */
+    .mobile-overlay {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .mobile-panel {
+      transform: translateY(-100%);
+      transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .mobile-overlay.open .mobile-panel {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="font-sans antialiased text-surface-mid">
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav id="navbar" class="fixed top-0 inset-x-0 z-50 h-11">
+    <div class="max-w-[980px] mx-auto px-4 sm:px-6 flex items-center justify-between h-full">
+      <a href="#hero" class="flex items-center gap-1.5">
+        <img src="https://qqai.ai/wp-content/uploads/2025/08/LOGOs.jpg" alt="QQAI" class="h-5 w-5 rounded object-cover" />
+        <span class="text-sm font-semibold text-white nav-text">QQAI</span>
+      </a>
+      <div class="hidden md:flex items-center gap-7">
+        <a href="index.html" class="text-xs text-white hover:text-white transition nav-link">Home</a>
+        <a href="services.html" class="text-xs text-white/80 hover:text-white transition nav-link">Services</a>
+        <a href="investor-relations.html" class="text-xs text-white/80 hover:text-white transition nav-link">Investor Relations</a>
+        <a href="blog.html" class="text-xs text-white/80 hover:text-white transition nav-link">Blog</a>
+        <a href="agency.html" class="text-xs text-white/80 hover:text-white transition nav-link">Partnership</a>
+        <a href="about-us.html" class="text-xs text-white/80 hover:text-white transition nav-link">About us</a>
+        <a href="faq.html" class="text-xs text-white/80 hover:text-white transition nav-link">FAQ</a>
+        <a href="contact.html" class="text-xs text-white/80 hover:text-white transition nav-link">Contact</a>
+      </div>
+      <button id="menuBtn" class="md:hidden text-white nav-text" aria-label="Menu">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu overlay -->
+  <div id="mobileOverlay" class="mobile-overlay fixed inset-0 z-[60]">
+    <div class="mobile-panel bg-white w-full pt-14 pb-8 px-8 shadow-xl">
+      <button id="closeMenu" class="absolute top-3 right-4 text-surface-mid" aria-label="Close">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <div class="flex flex-col gap-5">
+        <a href="index.html" class="mobile-link text-base font-semibold text-surface-mid">Home</a>
+        <a href="services.html" class="mobile-link text-base font-semibold text-surface-mid">Services</a>
+        <a href="investor-relations.html" class="mobile-link text-base font-semibold text-surface-mid">Investor Relations</a>
+        <a href="blog.html" class="mobile-link text-base font-semibold text-surface-mid">Blog</a>
+        <a href="agency.html" class="mobile-link text-base font-semibold text-surface-mid">Partnership</a>
+        <a href="about-us.html" class="mobile-link text-base font-semibold text-surface-mid">About us</a>
+        <a href="faq.html" class="mobile-link text-base font-semibold text-surface-mid">FAQ</a>
+        <a href="contact.html" class="mobile-link text-base font-semibold text-surface-mid">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== HERO — Dark ====== -->
+  <section id="hero" class="relative bg-black min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <h1 class="text-display text-white fade-in">
+        Simplifying<br />Entrepreneurship with AI
+      </h1>
+      <p class="mt-6 text-base sm:text-lg text-white/70 max-w-2xl mx-auto leading-relaxed fade-in">
+        QQAI is the pioneering AI technology company that empowers small and micro businesses with accessible and innovative solutions. We design AI-driven tools that put people first by giving every business, no matter how big or small, the chance to succeed in the digital age.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 fade-in">
+        <a href="#services" class="link-arrow inline-flex items-center gap-1 text-lg font-semibold text-brand hover:text-brand-hover transition">
+          Explore Services
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="link-arrow inline-flex items-center gap-1 text-lg font-semibold text-brand hover:text-brand-hover transition">
+          Get in Touch
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+    <!-- Subtle gradient glow -->
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand/10 rounded-full blur-[120px]"></div>
+  </section>
+
+  <!-- ====== ENTREPRENEURSHIP — Light ====== -->
+  <section id="entrepreneurship" class="bg-white py-24 lg:py-36">
+    <div class="max-w-[980px] mx-auto px-6">
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-display text-surface-mid fade-in">We Make Entrepreneurship<br />Easy For You</h2>
+        <p class="mt-6 text-lg text-surface-mid/70 leading-relaxed fade-in">
+          QQAI is established on a mission to "Make Entrepreneurship Easy," for modern entrepreneurs who experience limited resources, technical barriers, and high operational costs. As we believe entrepreneurship shouldn't be complicated, that's why our tools are designed in a way to streamline operations, save you time, reduce costs, and help your business grow.
+        </p>
+      </div>
+
+      <div class="mt-20 grid lg:grid-cols-2 gap-16 items-center">
+        <div class="stagger space-y-10">
+          <div class="fade-in">
+            <h3 class="text-title text-surface-mid">AI-Driven Solutions</h3>
+            <p class="mt-2 text-surface-mid/60 leading-relaxed">Our AI tools, like ClipN, LongShort Clip and Gold Finance Blade, automate the video creation and distribution process</p>
+          </div>
+          <div class="fade-in">
+            <h3 class="text-title text-surface-mid">Accessible Expertise</h3>
+            <p class="mt-2 text-surface-mid/60 leading-relaxed">Our tools have features like one-click editing and auto-generated content that don't require technical training at all.</p>
+          </div>
+          <div class="fade-in">
+            <h3 class="text-title text-surface-mid">Affordable Innovation</h3>
+            <p class="mt-2 text-surface-mid/60 leading-relaxed">We offer a budget-friendly pricing model, which is 40-60% more affordable than competitors and accessible to all.</p>
+          </div>
+        </div>
+        <div class="fade-in">
+          <img src="https://qqai.ai/wp-content/uploads/2025/08/98a6936f-ad96-4e9e-8a24-349e581402f4-753x1024.jpg" alt="QQAI Entrepreneurship" class="w-full max-h-[560px] object-cover rounded-2xl" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== WHY PARTNER — Dark ====== -->
+  <section id="partnership" class="bg-black py-24 lg:py-36">
+    <div class="max-w-[980px] mx-auto px-6 text-center">
+      <h2 class="text-display text-white fade-in">Why Partner with QQAI?</h2>
+      <p class="mt-6 text-lg text-white/60 max-w-2xl mx-auto fade-in">At QQAI, we don't only build AI tools, we create opportunities. Our partnership empowers entrepreneurs, founders, and businesses worldwide.</p>
+
+      <div class="mt-20 grid sm:grid-cols-2 gap-x-12 gap-y-16 text-left stagger">
+        <div class="fade-in">
+          <h3 class="text-title text-white">Access to the AI Market</h3>
+          <p class="mt-3 text-white/50 leading-relaxed">You can get the chance to enter into fast-growing automation and digital marketing industry worldwide.</p>
+        </div>
+        <div class="fade-in">
+          <h3 class="text-title text-white">Proven AI Video Tools</h3>
+          <p class="mt-3 text-white/50 leading-relaxed">You can leverage AI tools like ClipN, LongShort Clip, and 金财刀, trusted by users for effortless video editing.</p>
+        </div>
+        <div class="fade-in">
+          <h3 class="text-title text-white">Strong Competitive Edge</h3>
+          <p class="mt-3 text-white/50 leading-relaxed">Stand out with easy-to-use and affordable tools that cost up to 60% less than global competitors.</p>
+        </div>
+        <div class="fade-in">
+          <h3 class="text-title text-white">Global Agent Program</h3>
+          <p class="mt-3 text-white/50 leading-relaxed">You can represent and distribute QQAI's AI-powered tools in your own countries or regions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SERVICES — Light ====== -->
+  <section id="services" class="bg-surface-light py-24 lg:py-36">
+    <div class="max-w-[980px] mx-auto px-6">
+      <div class="text-center">
+        <h2 class="text-display text-surface-mid fade-in">Services We Offer</h2>
+        <p class="mt-6 text-lg text-surface-mid/60 fade-in">We offer AI-driven tools and partnership programs such as:</p>
+      </div>
+
+      <div class="mt-20 grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger">
+        <div class="bg-white rounded-2xl p-8 fade-in">
+          <h3 class="text-title text-surface-mid">LongShort Clip</h3>
+          <p class="mt-3 text-surface-mid/60 leading-relaxed">Turn your long videos into short clips with automated video editing.</p>
+          <a href="#contact" class="link-arrow inline-flex items-center gap-1 mt-5 text-sm font-semibold text-brand hover:text-brand-hover transition">
+            Learn more
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="bg-white rounded-2xl p-8 fade-in">
+          <h3 class="text-title text-surface-mid">ClipN: AI Video Editor</h3>
+          <p class="mt-3 text-surface-mid/60 leading-relaxed">Transforms your video into viral-worthy clips in just a minute.</p>
+          <a href="#contact" class="link-arrow inline-flex items-center gap-1 mt-5 text-sm font-semibold text-brand hover:text-brand-hover transition">
+            Learn more
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="bg-white rounded-2xl p-8 fade-in">
+          <h3 class="text-title text-surface-mid">Gold Finance Blade</h3>
+          <p class="mt-3 text-surface-mid/60 leading-relaxed">Automatically cuts long live streams and film content into mobile-ready shorts.</p>
+          <a href="#contact" class="link-arrow inline-flex items-center gap-1 mt-5 text-sm font-semibold text-brand hover:text-brand-hover transition">
+            Learn more
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="bg-white rounded-2xl p-8 fade-in">
+          <h3 class="text-title text-surface-mid">Business Training Program</h3>
+          <p class="mt-3 text-surface-mid/60 leading-relaxed">Provide training in product sales, promotion, and operations to grow as a QQAI partner.</p>
+          <a href="#contact" class="link-arrow inline-flex items-center gap-1 mt-5 text-sm font-semibold text-brand hover:text-brand-hover transition">
+            Learn more
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="bg-white rounded-2xl p-8 fade-in">
+          <h3 class="text-title text-surface-mid">Brand & Development Support Program</h3>
+          <p class="mt-3 text-surface-mid/60 leading-relaxed">Offer brand and localized support to build credibility and scale faster in your region.</p>
+          <a href="#contact" class="link-arrow inline-flex items-center gap-1 mt-5 text-sm font-semibold text-brand hover:text-brand-hover transition">
+            Learn more
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== WHY CHOOSE US — Dark ====== -->
+  <section id="why-us" class="bg-black py-24 lg:py-36">
+    <div class="max-w-[980px] mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-in">
+          <img src="https://qqai.ai/wp-content/uploads/2025/08/Why-choose-us-1024x644.jpg" alt="Why Choose QQAI" class="w-full rounded-2xl" />
+        </div>
+        <div>
+          <h2 class="text-headline text-white fade-in">Why Choose Us</h2>
+          <p class="mt-4 text-white/60 leading-relaxed fade-in">QQAI is empowering the business by making entrepreneurship AI-simple, affordable and impactful. Here is why we stand out first:</p>
+          <div class="mt-10 space-y-8 stagger">
+            <div class="fade-in">
+              <h4 class="text-lg font-semibold text-white">Globally Recognized</h4>
+              <p class="mt-1 text-white/50">A trusted leader in AI video editing with proven results.</p>
+            </div>
+            <div class="fade-in">
+              <h4 class="text-lg font-semibold text-white">24/7 Constant Support</h4>
+              <p class="mt-1 text-white/50">Our dedicated team is always ready to assist you.</p>
+            </div>
+            <div class="fade-in">
+              <h4 class="text-lg font-semibold text-white">Always Innovating</h4>
+              <p class="mt-1 text-white/50">We are constantly improving our tools to deliver you the latest AI technology.</p>
+            </div>
+            <div class="fade-in">
+              <h4 class="text-lg font-semibold text-white">Global Reach</h4>
+              <p class="mt-1 text-white/50">We have partners and users in markets across the globe.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PARTNERS — Light ====== -->
+  <section id="partners" class="bg-white py-24 lg:py-36">
+    <div class="max-w-[980px] mx-auto px-6 text-center">
+      <h2 class="text-display text-surface-mid fade-in">Partners Around the World</h2>
+      <p class="mt-6 text-lg text-surface-mid/60 max-w-2xl mx-auto fade-in">We are proud to have a network of partners worldwide, united in the mission to make entrepreneurship easier for everyone.</p>
+      <div class="mt-16 fade-in">
+        <img src="https://qqai.ai/wp-content/uploads/2025/08/360_F_353589355_LtATQccLZAMWctJrGuUawiHGV4LScmVo.jpg" alt="Partners Around the World" class="w-full rounded-2xl" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 24/7 SUPPORT CTA — Dark ====== -->
+  <section id="contact" class="bg-black py-24 lg:py-36">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-display text-white fade-in">Our 24/7 Dedicated Support<br />is Always There For You</h2>
+      <p class="mt-6 text-lg text-white/60 max-w-2xl mx-auto fade-in">At QQAI, our valuable clients' success is our first priority. That's why our technical team is always available for you to give you expert assistance around the clock.</p>
+      <div class="mt-10 fade-in">
+        <a href="contact.html" class="inline-flex items-center justify-center px-7 py-3 bg-brand hover:bg-brand-hover text-white text-sm font-semibold rounded-full transition">
+          Speak to Us
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== WHAT IS QQAI — Light ====== -->
+  <section id="about" class="bg-surface-light py-24 lg:py-36">
+    <div class="max-w-[980px] mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-headline text-surface-mid fade-in">What is QQAI?</h2>
+          <p class="mt-4 text-lg text-surface-mid/60 leading-relaxed fade-in">QQAI is a leading AI-driven technology firm, offering affordable, plug-and-play AI tools that automate key processes and reduce overhead.</p>
+          <div class="mt-8 flex flex-wrap gap-3 fade-in">
+            <span class="px-4 py-2 bg-surface-mid/5 text-surface-mid text-sm font-medium rounded-full">AI-First Innovation</span>
+            <span class="px-4 py-2 bg-surface-mid/5 text-surface-mid text-sm font-medium rounded-full">User-Centric Design</span>
+            <span class="px-4 py-2 bg-surface-mid/5 text-surface-mid text-sm font-medium rounded-full">Growth-Focused Partnership</span>
+          </div>
+        </div>
+        <div class="fade-in">
+          <img src="https://qqai.ai/wp-content/uploads/2025/08/What-is-QQAI-1024x610.jpg" alt="What is QQAI" class="w-full rounded-2xl" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TESTIMONIALS — White ====== -->
+  <section id="testimonials" class="bg-white py-24 lg:py-36">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-headline text-surface-mid fade-in">What Our Clients Say</h2>
+      <p class="mt-4 text-surface-mid/60 fade-in">From entrepreneurs to global brands, QQAI is transforming the way people work — see their stories.</p>
+      <div class="mt-16 fade-in">
+        <p class="text-2xl sm:text-3xl font-light text-surface-mid leading-snug tracking-tight">
+          "QQAI's tools have revolutionised our content strategy. The simplicity and power of ClipN allowed us to quickly expand our reach on social media without hiring a large team."
+        </p>
+        <div class="mt-8">
+          <p class="font-semibold text-surface-mid">David Cameron</p>
+          <p class="text-sm text-surface-mid/50">Project Manager</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FAQ — Light ====== -->
+  <section id="faq" class="bg-surface-light py-24 lg:py-36">
+    <div class="max-w-2xl mx-auto px-6">
+      <h2 class="text-headline text-surface-mid text-center fade-in">Frequently Asked Questions</h2>
+      <div class="mt-14 divide-y divide-surface-mid/10">
+        <details class="group py-6 fade-in">
+          <summary class="flex items-center justify-between cursor-pointer text-lg font-semibold text-surface-mid">
+            What is QQAI?
+            <svg class="w-5 h-5 text-surface-mid/40 transition-transform duration-300 group-open:rotate-45" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          </summary>
+          <p class="mt-3 text-surface-mid/60 leading-relaxed">QQAI is a leading AI-driven technology firm, offering affordable, plug-and-play AI tools that automate key processes and reduce overhead.</p>
+        </details>
+        <details class="group py-6 fade-in">
+          <summary class="flex items-center justify-between cursor-pointer text-lg font-semibold text-surface-mid">
+            What tools does QQAI offer?
+            <svg class="w-5 h-5 text-surface-mid/40 transition-transform duration-300 group-open:rotate-45" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          </summary>
+          <p class="mt-3 text-surface-mid/60 leading-relaxed">QQAI offers AI-driven tools including LongShort Clip, ClipN AI Video Editor, and Gold Finance Blade, along with business training and brand support programs.</p>
+        </details>
+        <details class="group py-6 fade-in">
+          <summary class="flex items-center justify-between cursor-pointer text-lg font-semibold text-surface-mid">
+            How can I partner with QQAI?
+            <svg class="w-5 h-5 text-surface-mid/40 transition-transform duration-300 group-open:rotate-45" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          </summary>
+          <p class="mt-3 text-surface-mid/60 leading-relaxed">Through our Global Agent Program, you can represent and distribute QQAI's AI-powered tools in your own countries or regions. Contact us to learn more.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="bg-surface-light border-t border-surface-mid/10">
+    <div class="max-w-[980px] mx-auto px-6 py-4">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-surface-mid/40">
+        <p>&copy; 2025 QQAI. All rights reserved.</p>
+        <div class="flex flex-wrap items-center gap-5">
+          <a href="index.html" class="hover:text-surface-mid transition">Home</a>
+          <a href="services.html" class="hover:text-surface-mid transition">Services</a>
+          <a href="agency.html" class="hover:text-surface-mid transition">Partnership</a>
+          <a href="about-us.html" class="hover:text-surface-mid transition">About</a>
+          <a href="contact.html" class="hover:text-surface-mid transition">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====== SCRIPTS ====== -->
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Mobile menu
+    const overlay = document.getElementById('mobileOverlay');
+    document.getElementById('menuBtn').addEventListener('click', () => overlay.classList.add('open'));
+    document.getElementById('closeMenu').addEventListener('click', () => overlay.classList.remove('open'));
+    document.querySelectorAll('.mobile-link').forEach(a => a.addEventListener('click', () => overlay.classList.remove('open')));
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XMJFKB0312"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XMJFKB0312');
+  </script>
+</body>
+</html>
