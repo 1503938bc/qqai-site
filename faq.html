@@ -272,7 +272,7 @@
         </div>
       </div>
       <div class="mt-10 pt-6 border-t border-surface-mid/10 text-center">
-        <p class="text-xs text-surface-mid/40">&copy; 2025 QQAI. All rights reserved.</p>
+        <p class="text-xs text-surface-mid/40">&copy; <span class="footer-year"></span> QQAI. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -294,5 +294,6 @@
     gtag('js', new Date());
     gtag('config', 'G-XMJFKB0312');
   </script>
+<script>document.querySelectorAll(".footer-year").forEach(el=>el.textContent=new Date().getFullYear());</script>
 </body>
 </html>
